@@ -1,14 +1,37 @@
 <div class="item">
-    <div>Avatar URL</div>
+    <div>Categoria</div>
+    <div>
+        <select name="category_id">
+
+            {% for category in categories %}
+            <option value="{{category.id}}" {% if product.category_id == category.id %}selected{% endif %} >
+                {{category.name}}
+            </option>
+            {% endfor %}
+
+        </select>
+    </div>
+</div>
+
+<div class="item">
+    <div>Name</div>
     <div>
         <input
-            type="url"
-            name="avatar_url"
-            placeholder="http://"
-            value="{{ member.avatar_url }}"
+            type="text"
+            name="name"
+            placeholder="Digite o Título do Anúncio"
+            value="{{ product.name }}"
         >
     </div>
 </div>
+
+
+
+
+
+
+
+
 
 <div class="item">
     <div>Membro</div>
@@ -116,17 +139,6 @@
     </div>
 </div>
 
-<div class="item">
-    <div>Instrutor</div>
-    <div>
-        <select name="instructor">
-            
-            {% for instructor in instructorOptions %}
-            <option value="{{instructor.id}}" {% if member.instructor_id == instructor.id %}selected{% endif %} >{{instructor.name}}</option>
-            {% endfor %}
 
-        </select>
-    </div>
-</div>
 
 <button type="submit">Salvar</button>
