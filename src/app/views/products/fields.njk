@@ -54,10 +54,59 @@
 </div>
 
 
+{# Campo de foto #}
+
 
 <div class="item">
 
-    <div>Sexo</div>
+    <div>Valor</div>
+
+    <div>
+
+        <input
+            type="text"
+            name="price"
+            placeholder="Preço do Produto"
+            value="{{ product.price }}"
+            {# Faremos uma mascara de dinheiro / reais #}
+        >
+
+    </div>
+
+    {% if product.old_price %}
+
+        <input name="old_price" value="{{product.old_price}}" type="hidden" />
+
+    {% endif %}
+
+</div>
+
+
+
+<div class="item">
+
+    <div>Quantidade</div>
+
+    <div>
+
+        <input
+            type="number"
+            name="quantity"
+            placeholder="Estoque Disponível"
+            value="{{ product.quantity }}"
+        >
+
+    </div>
+
+</div>
+
+
+
+{% if product.status %}
+
+<div class="item">
+
+    <div>Disponível ?</div>
 
     <div>
 
@@ -65,12 +114,12 @@
 
             <input 
                 type="radio" 
-                name="gender" 
-                value="M"
-                {% if member.gender == 'M' %}
+                name="status" 
+                value="1"
+                {% if product.status == '1' %}
                     checked
                 {% endif %} 
-            > Masculino
+            > Sim
 
         </span>
 
@@ -78,18 +127,20 @@
 
             <input 
                 type="radio" 
-                name="gender" 
-                value="F"
-                {% if member.gender == 'F' %}
+                name="status" 
+                value="0"
+                {% if product.status == '0' %}
                     checked
                 {% endif %} 
-                > Feminino
+                > Não
 
         </span>
 
     </div>
 
 </div>
+
+{% endif %}
 
 
 
