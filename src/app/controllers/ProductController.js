@@ -2,7 +2,7 @@ const Category = require('../models/Category');
 
 module.exports = {
     create(req, res) {
-        //Pegar categorias
+        //Pegar categorias com Promisses
         Category.all()
         .then(function(results) {
             const categories = results.rows;
@@ -12,10 +12,20 @@ module.exports = {
         }).catch(function(err) {
             throw new Error(err)
         })
-
-        return res.render("products/create.njk")
     },
     post(req, res) {
-        //Lógica de salvar
+        //Lógica de salvar com Async Await
+
+        /*const keys = Object.keys(req.body)
+
+        for (const key of keys) {
+            if (req.body[key] == "") {
+                return res.send('Please, fill all fields!')
+            }
+        }
+
+        Category.create(req.body, function(categories) {
+            return res.redirect(`products/${}`)
+        })*/
     }
 }
