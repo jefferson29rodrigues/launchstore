@@ -25,13 +25,13 @@ module.exports = {
 
         const values = [
             data.category_id,
-            4,
+            data.user_id || 4,
             data.name,
             data.description,
-            data.old_price,
+            data.old_price || data.price,
             data.price,
             data.quantity,
-            data.status
+            data.status || 1
         ]
 
         console.log("3- values "+values)
