@@ -45,9 +45,7 @@
 
     <div>
 
-        <textarea name="description" id="" cols="30" rows="10">
-            {{product.description}}
-        </textarea>
+        <textarea name="description" id="" cols="30" rows="10">{{product.description}}</textarea>
 
     </div>
 
@@ -68,7 +66,7 @@
             name="price"
             placeholder="Preço do Produto"
             value="{{ product.price }}"
-            {# Faremos uma mascara de dinheiro / reais #}
+            onkeydown="Mask.apply(this, 'formatBRL')"
         >
 
     </div>

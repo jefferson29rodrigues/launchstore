@@ -23,9 +23,13 @@ module.exports = {
         `
         console.log("2- query "+query)
 
+        // R$ 1,23
+        data.price = data.price.replace(/\D/g, "")
+        //    123
+
         const values = [
             data.category_id,
-            data.user_id || 4,
+            data.user_id || 1,
             data.name,
             data.description,
             data.old_price || data.price,
@@ -37,5 +41,8 @@ module.exports = {
         console.log("3- values "+values)
 
         return db.query(query, values)
+    },
+    find(id) {
+        return db.query('SELECT * FROM products WHERE id = $1', [id])
     }
 }
