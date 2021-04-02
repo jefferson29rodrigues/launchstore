@@ -51,5 +51,12 @@ module.exports = {
         const day = `0${desde.getUTCDate()}`.slice(-2)
 
         return `${day}/${month}/${year}`
+    },
+
+    formatPrice(price) {
+        return new Intl.NumberFormat("pt-BR", {
+            style: 'currency',
+            currency: 'BRL'
+        }).format(price/100)
     }
 }
