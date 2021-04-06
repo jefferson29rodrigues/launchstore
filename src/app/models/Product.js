@@ -2,9 +2,7 @@ const db = require('../../config/db')
 
 module.exports = {
     create(data) {
-
-        console.log("1- data(req.body) "+data)
-
+        
         const query = `
             INSERT INTO products (
                 category_id,
@@ -21,7 +19,6 @@ module.exports = {
             ) 
             RETURNING id
         `
-        console.log("2- query "+query)
 
         // R$ 1,23
         data.price = data.price.replace(/\D/g, "")
@@ -38,7 +35,6 @@ module.exports = {
             data.status || 1
         ]
 
-        console.log("3- values "+values)
 
         return db.query(query, values)
     },
@@ -64,7 +60,7 @@ module.exports = {
             data.user_id,
             data.name,
             data.description,
-            data.old_price,        
+            data.old_price,
             data.price,
             data.quantity,
             data.status,
@@ -72,5 +68,8 @@ module.exports = {
         ]
 
         return db.query(query, values)
+    },
+    delete(id) {
+        return db.query('DELETE FROM products WHERE id = $1', [id])
     }
 }
