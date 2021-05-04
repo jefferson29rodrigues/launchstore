@@ -61,7 +61,7 @@ const PhotosUpload = {
         const div = document.createElement('div')
         div.classList.add('photo')
 
-        div.onclick = () => alert('remover foto')
+        div.onclick = PhotosUpload.removePhoto
 
         div.appendChild(image)
 
@@ -74,5 +74,12 @@ const PhotosUpload = {
         button.classList.add('material-icons')
         button.innerHTML = "close"
         return button
+    },
+    removePhoto(event) {
+        const photoDiv = event.target.parentNode
+        const photosArray = Array.from(PhotosUpload.preview.children)
+        const index = photosArray.indexOf(photoDiv)
+
+        photoDiv.remove()
     }
 }
